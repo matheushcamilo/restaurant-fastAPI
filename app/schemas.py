@@ -1,6 +1,10 @@
 from enum import Enum
+from typing import List
 from pydantic import BaseModel
 
+
+class Order(BaseModel):
+    description: str
 
 class Gender(str, Enum):
     male = "male"
@@ -10,4 +14,5 @@ class Gender(str, Enum):
 class Client(BaseModel):
     first_name: str
     last_name: str
-    gender: Gender 
+    gender: Gender
+    orders: List[Order] = [] 
