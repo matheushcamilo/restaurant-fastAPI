@@ -13,10 +13,10 @@ def get_by_name(first_name, last_name, db: Session):
 
 def create(request: schemas.Client, db: Session):
     new_client = models.Client(first_name=request.first_name, last_name=request.last_name,
-    gender=request.gender)
+    gender=request.gender, orders = request.orders)
     db.add(new_client)
     db.commit()
     db.refresh(new_client)
     return new_client
-   
-        
+           
+    
