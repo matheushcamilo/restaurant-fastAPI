@@ -15,4 +15,3 @@ class Client(BaseModel):
     first_name: str
     last_name: str
     gender: Gender
-    orders: List[Order] = [] 

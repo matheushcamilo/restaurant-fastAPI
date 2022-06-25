@@ -15,7 +15,6 @@ class Client(Base):
     gender = Column(String)
     orders = relationship('Order')
 
-
 class Order(Base):
   __tablename__ = 'orders'
 
