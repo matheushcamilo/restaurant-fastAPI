@@ -6,7 +6,6 @@ def get_all(db: Session):
     clients = db.query(models.Client).all()
     return clients
 
-
 def get_by_name(first_name, last_name, db: Session):
     return db.query(models.Client).filter(models.Client.first_name == first_name and
     models.Client.last_name == last_name).first()
