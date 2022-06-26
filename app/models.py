@@ -1,5 +1,6 @@
 from .database import Base
 from sqlalchemy import Column, String, Integer, UniqueConstraint, ForeignKey
+from sqlalchemy_utils import EmailType
 from sqlalchemy.orm import relationship
 
 class Client(Base):
@@ -13,6 +14,9 @@ class Client(Base):
     first_name = Column(String)
     last_name = Column(String)
     gender = Column(String)
+    email = Column(EmailType)
+    password = Column(String)
+
     orders = relationship('Order')
 
 class Order(Base):

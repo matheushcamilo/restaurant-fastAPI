@@ -1,3 +1,4 @@
+import email
 from enum import Enum
 from typing import List
 from pydantic import BaseModel
@@ -16,10 +17,17 @@ class Gender(str, Enum):
     other = "other"
 
 class Client(BaseModel):
+    first_name: str = 'First Name'
+    last_name: str = 'Last Name'
+    gender: Gender = 'Your gender'
+    email: str = 'example@example.com'
+    password: str = ''
+
+class ClientResponseModel(BaseModel):
     first_name: str
     last_name: str
-    gender: Gender
+    gender: str
+    email: str
 
-class ClientResponseModel(Client):
     class Config:
         orm_mode = True

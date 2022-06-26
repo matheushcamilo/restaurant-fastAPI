@@ -25,7 +25,7 @@ def update_by_id(id, request: schemas.Client, db: Session):
     
 def create(request: schemas.Client, db: Session):
     new_client = models.Client(first_name=request.first_name, last_name=request.last_name,
-    gender=request.gender)
+    gender=request.gender, email=request.email, password=request.password)
     db.add(new_client)
     db.commit()
     return new_client
