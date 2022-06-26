@@ -6,6 +6,10 @@ from pydantic import BaseModel
 class Order(BaseModel):
     description: str
 
+class OrderResponseModel(Order):
+    class Config:
+        orm_mode = True
+
 class Gender(str, Enum):
     male = "male"
     female = "female"
@@ -15,3 +19,7 @@ class Client(BaseModel):
     first_name: str
     last_name: str
     gender: Gender
+
+class ClientResponseModel(Client):
+    class Config:
+        orm_mode = True

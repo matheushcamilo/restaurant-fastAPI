@@ -18,7 +18,7 @@ def update_by_id(id, request: schemas.Order, db: Session):
         return None
     order.update(request.dict())
     db.commit()
-    return "updated"
+    return 'updated'
 
 def create(request: schemas.Order, db: Session):
     new_order = models.Order(description=request.description)
