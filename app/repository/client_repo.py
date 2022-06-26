@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .. import models, schemas
-
+from ..hashing import Hash
 
 def get_all(db: Session):
     clients = db.query(models.Client).all()
@@ -25,7 +25,7 @@ def update_by_id(id, request: schemas.Client, db: Session):
     
 def create(request: schemas.Client, db: Session):
     new_client = models.Client(first_name=request.first_name, last_name=request.last_name,
-    gender=request.gender, email=request.email, password=request.password)
+    gender=request.gender, email=request.email, password=Hash.bcrypt(request.password))
     db.add(new_client)
     db.commit()
     return new_client

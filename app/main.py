@@ -11,6 +11,7 @@ Base.metadata.create_all(engine)
 
 
 #-----------------Endpoits to deal with clients --------------------------
+
 @app.get("/clients", status_code=200, response_model=List[schemas.ClientResponseModel])
 def get_all_clients(db: Session = Depends(get_db)):
     clients = client_repo.get_all(db)
