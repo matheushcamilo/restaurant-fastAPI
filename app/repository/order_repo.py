@@ -21,10 +21,12 @@ def update_by_id(id, request: schemas.Order, db: Session):
     return 'updated'
 
 def create(request: schemas.Order, db: Session):
-    new_order = models.Order(description=request.description)
+    new_order = models.Order(description=request.description, client_id=request.client_id)
     db.add(new_order)
     db.commit()
     db.refresh(new_order)
-    return new_order    
+    return new_order 
+
+
 
 

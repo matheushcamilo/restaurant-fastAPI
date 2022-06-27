@@ -1,13 +1,15 @@
-import email
 from enum import Enum
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 
 
-class Order(BaseModel):
+class OrderBase(BaseModel):
     description: str
 
-class OrderResponseModel(Order):
+class Order(OrderBase):
+    client_id: Optional[int]
+
+class OrderResponseModel(OrderBase):
     class Config:
         orm_mode = True
 
@@ -28,6 +30,7 @@ class ClientResponseModel(BaseModel):
     last_name: str
     gender: str
     email: str
+    orders: List[OrderResponseModel]
 
     class Config:
         orm_mode = True
