@@ -17,7 +17,7 @@ class Client(Base):
     email = Column(EmailType)
     password = Column(String)
 
-    orders = relationship('Order')
+    orders = relationship('Order', back_populates='client')
 
 class Order(Base):
   __tablename__ = 'orders'
@@ -25,6 +25,8 @@ class Order(Base):
   id = Column(Integer, primary_key=True, index=True)
   description = Column(String)
   client_id = Column(Integer, ForeignKey('clients.id'))
+
+  client = relationship('Client', back_populates='orders')
 
 
 
