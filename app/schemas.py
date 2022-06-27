@@ -34,3 +34,12 @@ class ClientResponseModel(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Login(BaseModel):
+    email: str
+    password: str
+
+class LoginResponseModel(BaseModel):
+    first_name: str
+    last_name: str
+    email: str   
