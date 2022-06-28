@@ -43,3 +43,10 @@ class LoginResponseModel(BaseModel):
     first_name: str
     last_name: str
     email: str   
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str    
+
+class TokenData(BaseModel):
+    email: Optional[str] = None    
